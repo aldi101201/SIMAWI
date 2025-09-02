@@ -11,7 +11,6 @@ class dashboard extends CI_Controller {
     public function index() {
         $this->load->model('Dashboard_model');
     
-        $data['total_patient'] = $this->Dashboard_model->get_total_patient();
         $data['recent_patient'] = $this->Dashboard_model->get_recent_patient();
         $data['top_icd_code'] = $this->Dashboard_model->get_top_icd_code();
     
