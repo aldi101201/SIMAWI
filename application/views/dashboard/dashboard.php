@@ -2,8 +2,6 @@
 
 <div class="container mt-3">
     <h2>Dashboard</h2>
-
-
     <div class="card mb-3">
         <div class="card-header">Kode ICD terbanyak</div>
         <div class="card-body">

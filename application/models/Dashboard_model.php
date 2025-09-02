@@ -26,16 +26,16 @@
         $this->db->limit(5);
         return $this->db->get()->result();
     }
-    public function get_top_icd_code_by_doctor($doctor_id) {
-        $this->db->select('icd10_code, MAX(symptoms) AS icd_description, COUNT(icd10_code) as count');
-        $this->db->from('patient_history');
-        $this->db->where('doctor_id', $doctor_id);
-        $this->db->where('icd10_code IS NOT NULL');
-        $this->db->group_by('icd10_code');  // Gabungkan berdasarkan kode ICD
-        $this->db->order_by('count', 'DESC');
-        $this->db->limit(5);
-        return $this->db->get()->result();
-    }   
+    // public function get_top_icd_code_by_doctor($doctor_id) {
+    //     $this->db->select('icd10_code, MAX(symptoms) AS icd_description, COUNT(icd10_code) as count');
+    //     $this->db->from('patient_history');
+    //     $this->db->where('doctor_id', $doctor_id);
+    //     $this->db->where('icd10_code IS NOT NULL');
+    //     $this->db->group_by('icd10_code');  // Gabungkan berdasarkan kode ICD
+    //     $this->db->order_by('count', 'DESC');
+    //     $this->db->limit(5);
+    //     return $this->db->get()->result();
+    // }   
 }
     
 ?>
