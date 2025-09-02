@@ -2,14 +2,14 @@
 class medical_record extends CI_Controller{
     public function __construct(){
         parent::__construct();
-        $this->load->model('medical_record_model');
-        $this->load->model('ICD10_Model');
+        $this->load->model('Medical_record_model');
+        $this->load->model('ICD10_model');
         $this->load->library('form_validation');
     }
 
     public function search_icd10() {
         $query = $this->input->get('query');
-        $data = $this->ICD10_Model->search_icd10($query);
+        $data = $this->ICD10_model->search_icd10($query);
 
         if (isset($data['error'])) {
             echo json_encode(["error" => $data['error']]);
@@ -28,15 +28,15 @@ class medical_record extends CI_Controller{
     }
 
     public function check_api_connection() {
-        $token = $this->ICD10_Model->get_token();
+        $token = $this->ICD10_model->get_token();
         echo "OAuth Token: " . $token;
     }
 
     public function index(){
         $data['judul'] = 'Rekam Medis';
-        $data['patient_history'] = $this->medical_record_model->getAllMr();
+        $data['patient_history'] = $this->Medical_record_model->getAllMr();
         $this->load->view('layout/header', $data);
-        $this->load->view('medical_record/index', $data);
+        $this->load->view('Medical_record/index', $data);
         $this->load->view('layout/footer');
     }
 
@@ -44,7 +44,7 @@ class medical_record extends CI_Controller{
     public function create() {
         $data['judul'] = "Tambah Rekam Medis";
         $this->load->view('layout/header', $data);
-        $this->load->view('medical_records/create');
+        $this->load->view('medical_record/create');
         $this->load->view('layout/footer');
     }
 
@@ -60,7 +60,7 @@ class medical_record extends CI_Controller{
             'icd10_name' => $this->input->post('icd10_name'),
             'is_done' => $this->input->post('is_done')
         );
-        $this->mrModel->create_medical_record($data);
+        $this->Medical_record_model->create_medical_record($data);
         redirect('medical_record');
     }
 
@@ -82,7 +82,7 @@ class medical_record extends CI_Controller{
             $this->load->view('medical_records/tambah');
             $this->load->view('layout/footer');
         }else{
-            $this->medical_record_model->tambahMr();
+            $this->Medical_record_model->tambahMr();
             $this->session->set_flashdata('flash', 'Ditambah');
             redirect('patient_history');
         }
@@ -90,7 +90,7 @@ class medical_record extends CI_Controller{
 
     public function hapus($id)
     {
-        $this->medical_record_model->hapusMr($id);
+        $this->Medical_record_model->hapusMr($id);
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('medical_record');
     }

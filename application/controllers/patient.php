@@ -37,7 +37,7 @@ class patient extends CI_Controller
             $this->load->view('patient/tambah_patient');
             $this->load->view('layout/footer');
         }else{
-            $this->patientModel->tambahPatient();
+            $this->Patient_model->tambah_patient();
             $this->session->set_flashdata('flash', 'Ditambah');
             redirect('patient');
         }
@@ -72,7 +72,7 @@ class patient extends CI_Controller
             $this->load->view('patient/edit_patient', $data);
             $this->load->view('layout/footer');
         }else{
-            $this->patientModel->ubahPatient();
+            $this->Patient_model->ubah_patient();
             $this->session->set_flashdata('flash', 'Diubah');
             redirect('patient');
         }
@@ -80,7 +80,7 @@ class patient extends CI_Controller
 
     public function hapus($id)
     {
-        $this->patientModel->hapusPatient($id);
+        $this->Patient_model->hapus_patient($id);
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('patient');
     }

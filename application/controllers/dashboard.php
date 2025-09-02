@@ -1,11 +1,21 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class dashboard extends CI_Controller {
-    public function index ($nama = ''){
-        $data['judul'] = 'Halaman Utama';
-        $data['nama'] = $nama;
-        $this->load->view('layout/header', $data);
-        $this->load->view('dashboard/dashboard', $nama);
-        $this->load->view('layout/footer');
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('Dashboard_model');
     }
+
+    public function index() {
+        $this->load->model('Dashboard_model');
+    
+        $data['total_patient'] = $this->Dashboard_model->get_total_patient();
+        $data['recent_patient'] = $this->Dashboard_model->get_recent_patient();
+        $data['top_icd_code'] = $this->Dashboard_model->get_top_icd_code();
+    
+        $this->load->view('dashboard/dashboard', $data);
+    }
+    
 }

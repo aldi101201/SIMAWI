@@ -69,7 +69,7 @@
                             } else {
                                 // Extract ICD-10 code and name
                                 let icdCode = data["@id"].split("/")
-                            .pop(); // Extract "A00"
+                                    .pop(); // Extract "A00"
                                 let icdName = data["title"]["@value"]; // Get "Cholera"
 
                                 // Populate the fields

@@ -34,7 +34,7 @@ class user extends CI_Controller
             $this->load->view('user/tambah_user');
             $this->load->view('layout/footer');
         }else{
-            $this->userModel->tambahUser();
+            $this->User_model->tambahUser();
             $this->session->set_flashdata('flash', 'Ditambah');
             redirect('user');
         }
@@ -50,7 +50,7 @@ class user extends CI_Controller
     public function detail($id)
     {
         $data['judul'] = "Detail User";
-        $data['user'] = $this->userModel->getUserById($id);
+        $data['user'] = $this->User_model->getUserById($id);
         $this->load->view('layout/header', $data);
         $this->load->view('user/detail', $data);
         $this->load->view('layout/footer');
@@ -59,8 +59,8 @@ class user extends CI_Controller
     public function edit($id)
     {
         $data['judul'] = 'Form Edit Data User';
-        $data['user'] = $this->userModel->getUserById($id);
-        $role = $this->userModel->getAllRole();
+        $data['user'] = $this->User_model->getUserById($id);
+        $role = $this->User_model->getAllRole();
         $data['role'] = array_column($role, 'role');
         
         $this->form_validation->set_rules('name', 'Name', 'required');
@@ -73,7 +73,7 @@ class user extends CI_Controller
             $this->load->view('user/edit_user', $data);
             $this->load->view('layout/footer');
         }else{
-            $this->userModel->ubahUser();
+            $this->User_model->ubahUser();
             $this->session->set_flashdata('flash', 'Diubah');
             redirect('user');
         }

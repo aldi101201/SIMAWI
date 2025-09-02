@@ -7,6 +7,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
 </script>
+
+<footer class="bg-body-tertiary text-dark text-center py-2 mt-5">
+    <p>&copy; <?= date('Y'); ?> Sistem Manajemen Rumah Sakit Integration </p>
+</footer>
+
 </body>
 
 </html>

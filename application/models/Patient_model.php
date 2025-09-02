@@ -3,6 +3,7 @@
 class Patient_model extends CI_Model{
     public function getAllPatient()
     {
+
         return $this->db->get('patient')->result_array();
         
     }
@@ -12,7 +13,7 @@ class Patient_model extends CI_Model{
         return $this->db->get_where('patient', ['id' => $id])->row_array();
     }
 
-    public function tambahPatient()
+    public function tambah_patient()
     {
         $data = [
             "record_number" => $this->input->post('record_number', true),
@@ -28,19 +29,19 @@ class Patient_model extends CI_Model{
         return $this->db->insert('patient', $data);
     }
 
-    public function updatePatient($id, $data)
+    public function update_patient($id, $data)
     {
         $this->db->where('id', $id);
         return $this->db->update('patient', $data);
     }
 
-    public function hapusPatient($id)
+    public function hapus_patient($id)
     {
         $this->db->where('id', $id);
         return $this->db->delete('patient');
     }
 
-    public function ubahPatient()
+    public function ubah_patient()
     {
         $data = [
             "record_number" => $this->input->post('record_number', true),
